@@ -17,7 +17,7 @@ namespace CS4790A2.Controllers
         // GET: Courses
         public ActionResult Index()
         {
-            return View(BasicSchool.getAllCourses());
+            return View(Repository.getAllCourses());
         }
 
         // GET: Courses/Details/5
@@ -27,7 +27,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = BasicSchool.getCourse(id);
+            Course course = Repository.getCourse(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace CS4790A2.Controllers
         {
             if (ModelState.IsValid)
             {
-                BasicSchool.addCourse(course);
+                Repository.addCourse(course);
                 return RedirectToAction("Index");
             }
 
@@ -64,7 +64,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = BasicSchool.getCourse(id);
+            Course course = Repository.getCourse(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -81,7 +81,7 @@ namespace CS4790A2.Controllers
         {
             if (ModelState.IsValid)
             {
-                BasicSchool.updateCourse(course);
+                Repository.updateCourse(course);
                 return RedirectToAction("Index");
             }
             return View(course);
@@ -94,7 +94,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = BasicSchool.getCourse(id);
+            Course course = Repository.getCourse(id);
             if (course == null)
             {
                 return HttpNotFound();
@@ -107,7 +107,7 @@ namespace CS4790A2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            BasicSchool.deleteCourse(id);
+            Repository.deleteCourse(id);
             return RedirectToAction("Index");
         }
 
@@ -115,7 +115,7 @@ namespace CS4790A2.Controllers
         {
             if (disposing)
             {
-                BasicSchool.disposeCourse();
+                Repository.dispose();
             }
             base.Dispose(disposing);
         }

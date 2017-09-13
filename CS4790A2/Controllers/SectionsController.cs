@@ -12,12 +12,12 @@ namespace CS4790A2.Controllers
 {
     public class SectionsController : Controller
     {
-        private BasicSchoolDBContext db = new BasicSchoolDBContext();
+        //private BasicSchoolDBContext db = new BasicSchoolDBContext();
 
         // GET: Sections
         public ActionResult Index()
         {
-            return View(db.sections.ToList());
+            return View(Repository.getAllSections());
         }
 
         // GET: Sections/Details/5
@@ -27,7 +27,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = BasicSchool.getSection(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -50,8 +50,7 @@ namespace CS4790A2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.sections.Add(section);
-                db.SaveChanges();
+                Repository.addSection(section);
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +64,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.sections.Find(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -82,8 +81,7 @@ namespace CS4790A2.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(section).State = EntityState.Modified;
-                db.SaveChanges();
+                Repository.updateSection(section);
                 return RedirectToAction("Index");
             }
             return View(section);
@@ -96,7 +94,7 @@ namespace CS4790A2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Section section = db.sections.Find(id);
+            Section section = Repository.getSection(id);
             if (section == null)
             {
                 return HttpNotFound();
@@ -109,9 +107,7 @@ namespace CS4790A2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Section section = db.sections.Find(id);
-            db.sections.Remove(section);
-            db.SaveChanges();
+            Repository.deleteSection(id);
             return RedirectToAction("Index");
         }
 
@@ -119,7 +115,7 @@ namespace CS4790A2.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Repository.dispose();
             }
             base.Dispose(disposing);
         }

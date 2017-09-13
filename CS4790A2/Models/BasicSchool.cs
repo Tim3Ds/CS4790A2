@@ -47,13 +47,7 @@ namespace CS4790A2.Models
             db.SaveChanges();
         }
 
-        public static void disposeCourse()
-        {
-            BasicSchoolDBContext db = new BasicSchoolDBContext();
-            db.Dispose();
-        }
-
-        public static List<Section> getAllSection()
+        public static List<Section> getAllSections()
         {
             BasicSchoolDBContext db = new BasicSchoolDBContext();
             return db.sections.ToList();
@@ -87,7 +81,7 @@ namespace CS4790A2.Models
             db.SaveChanges();
         }
 
-        public static void disposeSection()
+        public static void dispose()
         {
             BasicSchoolDBContext db = new BasicSchoolDBContext();
             db.Dispose();
