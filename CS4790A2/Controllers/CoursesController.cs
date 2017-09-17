@@ -35,6 +35,21 @@ namespace CS4790A2.Controllers
             return View(course);
         }
 
+        // GET: Courses/DetailsSections/5
+        public ActionResult DetailsSections(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            CourseAndSections course = Repository.getCourseAndSections(id);
+            if (course == null)
+            {
+                return HttpNotFound();
+            }
+            return View(course);
+        }
+
         // GET: Courses/Create
         public ActionResult Create()
         {

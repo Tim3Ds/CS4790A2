@@ -7,29 +7,10 @@ namespace CS4790A2.Models
 {
     public class Repository
     {
+        // get funtions
         public static List<Course> getAllCourses()
         {
             return BasicSchool.getAllCourses();
-        }
-
-        public static Course getCourse(int? id)
-        {
-            return BasicSchool.getCourse(id);
-        }
-
-        public static void addCourse(Course course)
-        {
-            BasicSchool.addCourse(course);
-        }
-
-        public static void updateCourse(Course course)
-        {
-            BasicSchool.updateCourse(course);
-        }
-
-        public static void deleteCourse(int id)
-        {
-            BasicSchool.deleteCourse(id);
         }
 
         public static List<Section> getAllSections()
@@ -37,9 +18,25 @@ namespace CS4790A2.Models
             return BasicSchool.getAllSections();
         }
 
+        public static Course getCourse(int? id)
+        {
+            return BasicSchool.getCourse(id);
+        }
+
         public static Section getSection(int? id)
         {
             return BasicSchool.getSection(id);
+        }
+
+        public static CourseAndSections getCourseAndSections(int? id)
+        {
+            return BasicSchool.getCourseAndSections(id);
+        }
+
+        // add functions
+        public static void addCourse(Course course)
+        {
+            BasicSchool.addCourse(course);
         }
 
         public static void addSection(Section section)
@@ -47,9 +44,21 @@ namespace CS4790A2.Models
             BasicSchool.addSection(section);
         }
 
+        // update funtions
+        public static void updateCourse(Course course)
+        {
+            BasicSchool.updateCourse(course);
+        }
+
         public static void updateSection(Section section)
         {
             BasicSchool.updateSection(section);
+        }
+
+        // delete funtions
+        public static void deleteCourse(int id)
+        {
+            BasicSchool.deleteCourse(id);
         }
 
         public static void deleteSection(int id)

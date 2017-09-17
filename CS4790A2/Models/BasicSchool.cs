@@ -58,6 +58,14 @@ namespace CS4790A2.Models
             BasicSchoolDBContext db = new BasicSchoolDBContext();
             return db.sections.Find(id);
         }
+        public static CourseAndSections getCourseAndSections(int? id)
+        {
+            BasicSchoolDBContext db = new BasicSchoolDBContext();
+            var vm = new CourseAndSections();
+            vm.Course = BasicSchool.getCourse(id);
+            vm.Sections = db.sections.Where(s => s.courseNumber.Equals(vm.Course.courseNumber)).ToList();
+            return vm;
+        }
 
         public static void addSection(Section section)
         {
@@ -129,5 +137,11 @@ namespace CS4790A2.Models
         public string sectionDays { get; set; }
         [DisplayName("Time")]
         public DateTime sectionTime { get; set; }
+    }
+
+    public class CourseAndSections
+    {
+        public Course Course { get; set; }
+        public List<Section> Sections { get; set; }
     }
 }
