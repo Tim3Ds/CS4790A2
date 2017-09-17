@@ -36,8 +36,11 @@ namespace CS4790A2.Controllers
         }
 
         // GET: Sections/Create
-        public ActionResult Create()
+        public ActionResult Create(String courseNumber)
         {
+            Section section = new Section();
+            section.courseNumber = courseNumber;
+            ViewData.Model = section;
             return View();
         }
 
