@@ -34,7 +34,7 @@ namespace CS4790A2.Controllers
             }
             return View(section);
         }
-
+        // Tring to get the course number to populate in the Course Number Field 
         // GET: Sections/Create
         public ActionResult Create(String courseNumber)
         {
