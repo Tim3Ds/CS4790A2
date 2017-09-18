@@ -58,6 +58,7 @@ namespace CS4790A2.Models
             BasicSchoolDBContext db = new BasicSchoolDBContext();
             return db.sections.Find(id);
         }
+
         public static CourseAndSections getCourseAndSections(int? id)
         {
             BasicSchoolDBContext db = new BasicSchoolDBContext();
