@@ -52,25 +52,25 @@
 
 <h4>Course Sections</h4>
 <p>
-    @Html.ActionLink("Create New Section", "Create", "Sections", new { id = Model.Course.courseNumber }, null)
+    @Html.ActionLink("Create New Section", "Create", "Sections", new { courseNumber = Model.Course.courseNumber, id = Model.Course.Id }, null)
 </p>
 <table class="table">
     
     <tr>
         <th>
-            Section ID
+            @Html.DisplayNameFor(model => model.Sections[0].sectionId)
         </th>
         <th>
-            Section Number
+            @Html.DisplayNameFor(model => model.Sections[0].sectionNumber)
         </th>
         <th>
-            Course Number
+            @Html.DisplayNameFor(model => model.Sections[0].courseNumber)
         </th>
         <th>
-            Section Days
+            @Html.DisplayNameFor(model => model.Sections[0].sectionDays)
         </th>
         <th>
-            Section Time
+            @Html.DisplayNameFor(model => model.Sections[0].sectionTime)
         </th>
         <th></th>
     </tr>

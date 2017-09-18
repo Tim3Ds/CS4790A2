@@ -36,11 +36,10 @@ namespace CS4790A2.Controllers
         }
         // Tring to get the course number to populate in the Course Number Field 
         // GET: Sections/Create
-        public ActionResult Create(String courseNumber)
+        public ActionResult Create(String courseNumber, int? id)
         {
-            Section section = new Section();
-            section.courseNumber = courseNumber;
-            ViewData.Model = section;
+            ViewBag.courseID = id;
+            ViewBag.courseNumber = courseNumber;
             return View();
         }
 
@@ -49,12 +48,20 @@ namespace CS4790A2.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,sectionId,sectionNumber,courseNumber,sectionDays,sectionTime")] Section section)
+        public ActionResult Create([Bind(Include = "Id,sectionId,sectionNumber,courseNumber,sectionDays,sectionTime")] Section section, [Bind(Include = "courseID")] int? id)
         {
             if (ModelState.IsValid)
             {
                 Repository.addSection(section);
-                return RedirectToAction("Index");
+                if(id == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return RedirectToAction("DetailsSections", "Courses", new { id = id });
+                }
+                
             }
 
             return View(section);
