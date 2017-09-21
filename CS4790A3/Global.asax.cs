@@ -6,9 +6,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
-using CS4790A2.Models;
+using CS4790A3.Models;
 
-namespace CS4790A2
+namespace CS4790A3
 {
     public class MvcApplication : System.Web.HttpApplication
     {

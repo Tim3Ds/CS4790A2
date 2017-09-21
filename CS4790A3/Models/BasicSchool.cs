@@ -1,4 +1,4 @@
-namespace CS4790A2.Models
+namespace CS4790A3.Models
 {
     using System;
     using System.Collections.Generic;

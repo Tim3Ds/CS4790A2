@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace CS4790A2
+namespace CS4790A3
 {
     public class BundleConfig
     {

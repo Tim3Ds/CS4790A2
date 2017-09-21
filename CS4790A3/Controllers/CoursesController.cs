@@ -6,9 +6,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CS4790A2.Models;
+using CS4790A3.Models;
 
-namespace CS4790A2.Controllers
+namespace CS4790A3.Controllers
 {
     public class CoursesController : Controller
     {
